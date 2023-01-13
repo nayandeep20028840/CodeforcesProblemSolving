@@ -1,3 +1,6 @@
+2.cpp is the correct code for this problem 
+This code is wrong.
+
 #include<bits/stdc++.h>
 using namespace std;
  
@@ -43,11 +46,11 @@ bool checkpalindrome(ll i){  // check palindrome number in n/2 time complexity
 }
 
 void solve(){
-    int l1,l2,l3;
-    cin>>l1>>l2>>l3;
-    ll sum = l1+l2+l3;
-    if(sum%2==0) cout<<"YES"<<endl;
-    else cout<<"NO"<<endl;
+    int l1 , l2 , l3 ;
+    cin >> l1 >> l2 >> l3 ;
+    ll sum = l1 + l2 + l3 ;
+    if(sum % 2 == 0) cout << "YES" << endl;
+    else cout << "NO" << endl;
 }
  
  
