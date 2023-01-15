@@ -1,3 +1,5 @@
+Refer 4.cpp for code 
+
 #include<bits/stdc++.h>
 using namespace std;
  
