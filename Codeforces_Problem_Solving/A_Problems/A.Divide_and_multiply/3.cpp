@@ -76,29 +76,6 @@ bool checkpalindrome(ll i){  // check palindrome number in n/2 time complexity
         return 1;
     }
 }
-
-// calculating factors of a number in sqrt(n) time complexity
-// we can calculate whether a number is prime or not in sqrt(N) time complexity
-// we can further calculate number of prime factors of a number
-//     int num;
-//     cin>>num;
-//     vector<int> v;
-//     for (ll i=1;i<=sqrt(num);i++){
-//         if (num%i==0){
-//             v.pb(i);
-//             // v.pb(num/i);
-//         }
-//     }
-//     for (ll i=sqrt(num);i>0;i--){
-//         if (num%i==0){
-//             // v.pb(i);
-//             v.pb(num/i);
-//         }
-//     }
-//     for(auto i : v){
-//         cout<<i<<" ";
-//     }
-//     cout<<endl;
  
 const int N = 1e5 + 4;
 const int M = 1e9 + 7;
@@ -113,14 +90,9 @@ void solve(){
         a.pb(x);
     }
     sort(a.begin(), a.end(), greater<int>());    
-    // for(auto i : a){
-    //     cout<<i<<endl;
-    // }
-    // ll c=0;
     ll sum=0;
     ll sum1=0;
     int sum2=a[0];
-    // cout<<sum<<endl;
     for(ll i=1;i<n;i++){
         if(a[i]%2==0){
             while(a[i]>1){
@@ -133,9 +105,6 @@ void solve(){
             cout<<sum<<endl;
         }
     }
-    // cout<<sum<<endl;
-    // cout<<sum1<<endl;
-    // cout<<c<<endl;
     cout<<sum + sum2 + sum1<<endl;
 }
  
