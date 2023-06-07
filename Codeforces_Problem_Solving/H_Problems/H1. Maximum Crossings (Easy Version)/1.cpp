@@ -18,10 +18,11 @@ template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 
-#define int               long long
+#define ll                long long
+#define int               ll
 #define ld                long double
 #define iv(a , n)         vector<int>a(n); for(int i=0;i<n;++i){cin>>a[i];}
-#define im(a , n , m)     vector<vector<int>>a(n,vector<int>(m)); for(int i=0;i<n;++i){for(int j=0;j<m;++j){cin>>a[i][j];}}
+// #define im(a , n , m)     vector<vector<int>>a(n,vector<int>(m)); for(int i=0;i<n;++i){for(int j=0;j<m;++j){cin>>a[i][j];}}
 #define yes               cout << "YES" << endl;
 #define no                cout << "NO" << endl;
 #define all(v)            v.begin(),v.end()
@@ -38,77 +39,52 @@ template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i
 #define ub                upper_bound
 #define bpp               __builtin_popcountll
 #define Pi                3.1415926535897932384626
-#define endl              "\n"
+#define EPS               1e-9
+#define nl                "\n"
 
 const int mod97 = 1000000007;
 const int modg = 998244353;
-const int M  = 1e9+7;
-const int N  = 1e5+7;
-int fac[N],invfact[N];
+const int N  = 1e3 + 10;
+int fac[N],invfact[N];vector<bool> isPrime(N,1);
 
 int gcd(int a, int b) {if(b == 0){return a;} return gcd(b, a % b);}
 int lcm(int a, int b){return (a/gcd(a,b)*b);}
-//int power(int a, int b ) {int res = 1; while (b > 0) {if (b & 1)res = (res * a); a = (a * a); b = b >> 1;} return res;}
-//int powermod(int a, int b, int mod97) {int res = 1; while (b > 0) {if (b & 1)res = (res * a) % mod97; a = (a * a) % mod97; b = b >> 1;} return res;}
-string decToBinary(int n){string s=""; int i = 0; while (n > 0) {s = to_string(n % 2)+s;n = n / 2;i++;}return s;}
-bool isPowerOfTwo(int n){if(n == 0){return false;} return (ceil(log2(n)) == floor(log2(n)));}
-bool isPerfectSquare(int x){if (x >= 0) {int sr = sqrt(x);return (sr * sr == x);}return false;}
-int power(int x, int y){int res=1; x=x%modg; while(y>0){if(y&1) res=(res*x)%modg; y=y>>1; x=(x*x)%modg;}return res;} 
+int power1(int a, int b) {int res=1; while(b > 0) {if(b & 1) res= (res*a); a=(a*a); b=b >> 1;} return res;}
+int inv_mult(int i) {if (i == 1) return 1; return (mod97 - ((mod97 / i) * inv_mult(mod97 % i)) % mod97) % mod97;}
+string decToBinary(int n){string s=""; int i=0; while(n > 0) {s=to_string(n % 2) + s; n=n/2; i++;}return s;}
+bool isPowerOfTwo(int n){if(n==0) {return false;} return (ceil(log2(n)) == floor(log2(n)));}
+bool isPerfectSquare(int x) {if (x>=0) {int sr = sqrt(x);return (sr * sr == x);}return false;}
+int power(int x, int y){int res=1; x=x % mod97; while(y>0){if(y&1) res = (res*x) % mod97; y=y>>1; x=(x*x) % mod97;}return res;} 
 int modInverse(int n){return power(n, modg - 2);} 
-void comp(){fac[0] = 1, invfact[0] = 1; for (int i = 1; i < N; i++){ fac[i] = (fac[i - 1] * i) % modg;invfact[i] = modInverse(fac[i]);}}
-int NCR(int n, int r, int p=modg) {if(r<0 || n<0)assert(false);if(n<r) return 0;if (r==0 || r==n)return 1;return(fac[n]*invfact[r]%modg)*invfact[n-r]%modg;}
-
-// how to declare dp vector<vector<int>> dp(n + 1 , vector<int> (3 , -1)) in void solve
+void comp(){fac[0] = 1, invfact[0] = 1; for(int i=1;i<=N;i++){ fac[i]= (fac[i-1]*i) % modg; invfact[i] = modInverse(fac[i]);}}
+int NCR(int n, int r, int p=modg) {if(r<0 || n<0)assert(false);if(n<r) return 0; if(r==0 || r==n)return 1;return(fac[n]*invfact[r]%modg)*invfact[n-r]%modg;}
+void prime(){isPrime[0]=isPrime[1]=false;for(int i = 2; i <= N; ++i){if(isPrime[i] == true){for(int j = 2*i; j <= N; j += i){isPrime[j] = false;}}}}
+int isqrt(int n){long long x = sqrtl(n);while (x*x>n){--x;} while((x+1) * (x+1)<=n){++x;}return x;}
+int sqrtprecision(int l,int r,int target){while(r-l>EPS){int mid=(l+(r-l)/2);if(mid*mid<target)l=mid;else r=mid;}return l+(r-l)/2;}
+int errichtokabinary(int l,int r,vector<int>&a,int target){int ans=-1; while(l <= r){int mid=(l+(r-l)/2); if(a[mid]==target){ans=mid;return ans;}if(a[mid]<target)l=mid+1;else r=mid-1;}return ans;}
+void nCr(int n, int r){long long p = 1, k = 1;if (n - r < r)r = n - r;if (r != 0) {while (r) {p *= n;k *= r;long long m = __gcd(p, k);p /= m;k /= m;n--;r--;}}else cout << p << endl;}
 
 bool solve(){
-    int n , k ;
-    cin >> n >> k ;
-    vector<int> v(n);
+    int n ;
+    cin >> n ;
+    iv(v , n)
+    vector<int > vv ;
+    int ans = 0 ;
+    int it = 0 ;
     for(int i = 0 ; i < n ; ++i){
-        cin >> v[i];
-    }
-    vector<vector<int>> count(n + 1 , vector<int> (31 , -1));
-    for(int i = 0 ; i < n ; ++i){
-        int mask = 0;
-        for(int j = 30 ; j >= 0 ; --j){
-            mask = (v[i] & (1 << j));
-            if(bool(mask) == 1){
-                count[i][j] = 1;
-            }else{
-                count[i][j] = 0;
-            }
+        vv.pb(v[i]) ;
+        it = lb(all(vv) , v[i]) - vv.begin() ;
+        it += 1 ;
+        // cout << it << " " ;
+        if(it <= vv.size()){
+            ans += vv.size() - it ;
         }
+        // cout << ans << nl ;
+        sort(all(vv)) ;
     }
-    for(int i = 30 ; i >= 0 ; --i){
-        int ans = 0;
-        for(int j = 0 ; j < n ; ++j){
-            if(count[j][i] == 0){
-                ans++;
-            }
-        }
-        if(ans <= k){
-            k -= ans;
-            for(int j = 0 ; j < n ; ++j){
-                count[j][i] = 1;
-            }
-        }
-        // cout << k << " ";
-    }
-    vector<int> masks;
-    for(int i = 30 ; i >= 0 ; --i){
-        int mask = 1;
-        for(int j = 0 ; j < n - 1 ; ++j){
-            mask = (count[j][i] and (count[j + 1][i]));
-        }
-        // cout << mask << " ";
-        masks.pb(mask);
-    }
-    int summ = 0;
-    for(int i = 0 ; i < 31 ; ++i){
-        if(masks[i] > 0)
-        summ += power(2 , 30 - i);
-    }
-    cout << summ << endl;
+    // if(it <= vv.size()) ans += vv.size() - it ;
+    cout << ans ;
+    cout << nl ;
     return true;
 }
 
