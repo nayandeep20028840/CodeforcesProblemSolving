@@ -33,10 +33,6 @@ void solve(){
     map<int,int> m;
     for(int i=0;i<n;++i){
         cin>>v[i];
-        // m[v[i]]++;
-        // if(m[v[i]] == 1){
-        //     v2.pb(v[i]);
-        // }
     }
     vector<int> v1;
     // sort(all(v2));

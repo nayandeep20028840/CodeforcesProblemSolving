@@ -67,30 +67,13 @@ const int N = 1e5 + 4;
 const int M = 1e9 + 7;
  
 int main(){
-    ll n,m,a,b;
-    cin>>n>>m>>a>>b;
-    // if(n>=m){
-    if((b)>(m*a)){
-        cout<<(n*a)<<endl;
+    ll n , m , a , b ;
+    cin >> n >> m >> a >> b ;
+    if( b > ( m * a ) ) {
+        cout << ( n * a ) << endl;
     }
-    // else if(n%m==0){
-    //     cout<<(n/m)*b<<endl;
-    // }
     else{
-        cout<<min(((n/m + 1)*b),((n/m)*b) + (n%m)*a)<<endl;
+        cout << min ( ( ( n / m + 1) * b) , ((n / m ) * b) + (n % m) * a) << endl;
     }
-    // }
-    // else{
-    // if((b)>(m*a)){
-    //     cout<<(n*a)<<endl;
-    // }
-    // else if(m%n==0){
-    //     cout<<(n)*b<<endl;
-    // }
-    // else{
-    //     cout<<min((n)*b,((n)*b) + (n%m)*a)<<endl;
-    // }
-    // }
-
 }
  

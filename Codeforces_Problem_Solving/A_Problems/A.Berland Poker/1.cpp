@@ -32,20 +32,6 @@ void solve(){
 			int r = m - n / k;
 			cout << n / k - (r + k - 2) / (k - 1) << '\n';
 		}
-    // } else {
-    //   cout << 0 << endl;
-    // }
-      
-    // int n,m,k;
-    // cin >> n >> m >> k;
-    // if(m <= (n / k)){
-    //     cout << m << endl;
-    // }
-    // else if(m > (n / k)) {
-    //     cout << n / k - ((m - n / k )/(n / k - 1)) << endl;
-    // }else{
-    //     cout << 0 << endl;
-    // }
     return;
 }
  

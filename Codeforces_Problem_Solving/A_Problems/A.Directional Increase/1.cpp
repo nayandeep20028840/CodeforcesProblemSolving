@@ -1,3 +1,5 @@
+                                                                   Refer 2.cpp for code
+
 #include<bits/stdc++.h>
 using namespace std;
  
@@ -79,11 +81,6 @@ void solve(){
         cout<<"No"<<'\n';
         return;
     }
-    // suffix[n-1] = v[n-1];
-    // if(suffix[n-1] > 0){
-    //     cout<<"No"<<'\n';
-    //     return;
-    // }
     for(int i=1;i<n;++i){
         prefix[i] = prefix[i-1] + v[i];
         if(prefix[i] < 0){
@@ -100,14 +97,7 @@ void solve(){
             cout<<"No"<<'\n';
             return;
         }
-    }
-    // for(int i = n-2;i>=0;--i){
-    //     suffix[i] = suffix[i+1] + v[i];
-    //     if(suffix[i] > 0){
-    //         cout<<"No"<<'\n';
-    //         return;
-    //     }
-    // }
+    }    
     cout<<"Yes"<<'\n';
     return;
 }
