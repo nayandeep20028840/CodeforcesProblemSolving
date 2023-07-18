@@ -76,7 +76,6 @@ void solve(){
 			ll ans2 = m - (j - i + 1);
 			for (ll k = 0; k < m; k++) {
 				string q = b.substr(k, j - i + 1);
-                // ll ans2 = k + m - (j - i +1) ;
 				if (p == q) {
 					ans = min(ans, ans1 + ans2);
 				}
