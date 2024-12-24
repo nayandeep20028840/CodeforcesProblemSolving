@@ -1,0 +1,1 @@
+Command failed: "c:/Users/varsh/.vscode/nayan work c c++/CodeForces_Live_Contest/CodeForces_Rounds/881_Div_3/q4/Tests/a.exe" 1 < "c:/Users/varsh/.vscode/nayan work c c++/CodeForces_Live_Contest/CodeForces_Rounds/881_Div_3/q4/Tests/input_1.txt" > "c:/Users/varsh/.vscode/nayan work c c++/CodeForces_Live_Contest/CodeForces_Rounds/881_Div_3/q4/Tests/code_output_1.txt"
